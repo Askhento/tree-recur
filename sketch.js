@@ -19,10 +19,13 @@ function branch(len){
 	line(0,0,0,-len);
  translate(0,-len);
 
-		 if(len>4) {
+		 if(len>7) {
 			 push();
 			 rotate(angle);
 			 branch(len*0.67);
+			 pop();
+			 push();
+			 branch(len*0.37);
 			 pop();
 			 push()
 			 rotate(-angle);
