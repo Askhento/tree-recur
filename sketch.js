@@ -1,6 +1,7 @@
 var angle;
 var rlen  = 70;
 var tree = [];
+var lev = [];
 
 function setup() {
 	createCanvas(400, 400);
@@ -17,14 +18,22 @@ function draw() {
 	for(var i = 0; i < tree.length; i++){
 	  tree[i].show();
   }
+	for(var i = 0; i < lev.length; i++){
+	  lev[i].show();
+		lev[i].fall();
+  }
 }
+
 
 function mousePressed() {
      for(var i = tree.length -1; i>=0; i--){
 
-			 if(!tree[i].finished){
+			 if(!tree[i].finished && !tree[i].last){
         tree.push(tree[i].mutate(angle)[0]);
 				tree.push(tree[i].mutate(angle)[1]);
+			}
+			if(tree[i].last){
+				lev.push(new leaves(tree[i].end.copy()));
 			}
 			tree[i].finished = true;
 		 }
