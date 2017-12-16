@@ -1,15 +1,19 @@
-var angle = 0;
-var leng  = 100;
-var slider;
+var angle;
+var leng  = 200;
+//var slider;
 function setup() {
-	createCanvas(400, 400);
-	slider = createSlider(0,PI,PI/4,0.01);
+	createCanvas(windowWidth, windowHeight);
+	//slider = createSlider(0,PI,PI/4,0.01);
+	angle = PI/3;
 }
 
 function draw() {
   background(0);
-	angle = slider.value();
+	//angle = slider.value();
+
 	translate(width/2,height);
+  var m = createVector(mouseX-width/2,mouseY-height);
+	rotate(m.heading()+PI/2);
 
 	stroke(255);
 	branch(leng);
@@ -24,9 +28,7 @@ function branch(len){
 			 rotate(angle);
 			 branch(len*0.67);
 			 pop();
-			 push();
-			 branch(len*0.37);
-			 pop();
+
 			 push()
 			 rotate(-angle);
 			 branch(len*0.67);
