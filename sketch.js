@@ -1,5 +1,5 @@
 var angle;
-var rlen  = 30;
+var rlen  = 70;
 var tree = [];
 
 function setup() {
