@@ -3,8 +3,8 @@ var rlen  = 200;
 var tree = [];
 
 function setup() {
-	createCanvas(windowWidth, windowHeight);
-	angle = PI/3;
+	createCanvas(400, 400);
+	angle = PI/6;
 
 	var b = createVector(width/2 , height);
 	var e = createVector(width/2, height-rlen);
