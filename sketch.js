@@ -1,10 +1,10 @@
 var angle;
-var rlen  = 50;
+var rlen  = 30;
 var tree = [];
 
 function setup() {
 	createCanvas(400, 400);
-	angle = PI/4;
+	angle = PI/8;
 
 	var b = createVector(width/2 , height);
 	var e = createVector(width/2, height-rlen);
