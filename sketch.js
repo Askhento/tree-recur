@@ -1,5 +1,5 @@
 var angle;
-var rlen = 70;
+var rlen = 100;
 var tree = [];
 var lev = [];
 
@@ -17,16 +17,16 @@ function draw() {
   background(0);
   for (var i = tree.length - 1; i >= 0; i--) {
     tree[i].show();
-		tree[i].grow();
-
+    tree[i].grow();
     if (tree[i].finished && !tree[i].last && !tree[i].mutated) {
       tree.push(tree[i].mutate(angle)[0]);
       tree.push(tree[i].mutate(angle)[1]);
       tree[i].mutated = true;
     }
-    //	if(tree[i].last){
-    //		lev.push(new leaves(tree[i].end.copy()));
-    //	}
+    	if(tree[i].last && !tree[i].mutated){
+    	  lev.push(new leaves(tree[i].end.copy()));
+				tree[i].mutated = true;
+    	}
   }
   for (var i = 0; i < lev.length; i++) {
     lev[i].show();
@@ -37,14 +37,12 @@ function draw() {
 
 function mousePressed() {
   for (var i = tree.length - 1; i >= 0; i--) {
-
     tree[i].gstart = true;
   }
 }
 
 function mouseReleased() {
 	for (var i = tree.length - 1; i >= 0; i--) {
-
     tree[i].gstart = false;
   }
 }

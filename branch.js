@@ -9,15 +9,17 @@ function branch(begin , end){
 
    this.show = function() {
      stroke(255);
-     var newEnd = createVector(this.end.x, this.end.y);
-     newEnd.mult(scale);
+     var newEnd = p5.Vector.sub(this.end, this.begin);
+     strokeWeight(map(newEnd.mag(),5,100,1,10));
+     newEnd.mult(this.scale);
+     newEnd.add(this.begin);
      line(this.begin.x , this.begin.y, newEnd.x, newEnd.y);
    }
 
    this.grow = function() {
      if(this.gstart && !this.finished) {
      if(this.scale <1 ) {
-       this.scale += 0.1;
+       this.scale += 0.05;
      } else {
        this.finished = true;
      }
@@ -35,7 +37,11 @@ function branch(begin , end){
       newEnd = p5.Vector.add(dir, this.end);
       newBr.push(new branch(this.end, newEnd));
 
-      if(dir.mag()<= 10){
+      if(this.gstart) {
+        newBr[0].gstart = true;
+        newBr[1].gstart = true;
+      }
+      if(dir.mag()<= 5){
           newBr[0].last = true;
           newBr[1].last = true;
       }
