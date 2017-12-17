@@ -38,7 +38,9 @@ function draw() {
 function mousePressed() {
   for (var i = tree.length - 1; i >= 0; i--) {
     tree[i].gstart = true;
+
   }
+
 }
 
 function mouseReleased() {
