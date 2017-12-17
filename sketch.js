@@ -8,11 +8,14 @@ var e;
 
 function setup() {
   createCanvas(400, 400);
-  angle = PI / 8;
+  angle = PI / 8
+	background(0);
+	textSize(32);
+	text("SWIPE UP ^",10,30);
 }
 
 function draw() {
-  background(0);
+
   for (var i = treez.length - 1; i > 0; i--) {
     treez[i].init();
   }
