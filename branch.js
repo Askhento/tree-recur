@@ -6,17 +6,18 @@ function branch(begin , end){
    this.scale = 0;
    this.gstart = false;
    this.mutated = false;
-
+//------------------------------------------------------------------
    this.show = function() {
      stroke(255);
      var newEnd = p5.Vector.sub(this.end, this.begin);
-     strokeWeight(map(newEnd.mag(),5,100,1,10));
+     strokeWeight(map(newEnd.mag(),5,100,1,5));
      newEnd.mult(this.scale);
      newEnd.add(this.begin);
      line(this.begin.x , this.begin.y, newEnd.x, newEnd.y);
    }
-
+// -------------------------------------------------------------
    this.grow = function() {
+
      if(this.gstart && !this.finished) {
      if(this.scale <1 ) {
        this.scale += 0.05;
@@ -24,7 +25,10 @@ function branch(begin , end){
        this.finished = true;
      }
     }
+
    }
+//--------------------------------------------------------------------
+
    this.mutate = function(a) {
       var dir  = p5.Vector.sub(this.end, this.begin);
       dir.rotate(a);
