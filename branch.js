@@ -3,14 +3,28 @@ function branch(begin , end){
    this.end = end;
    this.finished = false;
    this.last = false;
+   this.scale = 0;
+   this.gstart = false;
+   this.mutated = false;
 
    this.show = function() {
      stroke(255);
-     line(this.begin.x , this.begin.y, this.end.x, this.end.y);
+     var newEnd = createVector(this.end.x, this.end.y);
+     newEnd.mult(scale);
+     line(this.begin.x , this.begin.y, newEnd.x, newEnd.y);
+   }
+
+   this.grow = function() {
+     if(this.gstart && !this.finished) {
+     if(this.scale <1 ) {
+       this.scale += 0.1;
+     } else {
+       this.finished = true;
+     }
+    }
    }
    this.mutate = function(a) {
       var dir  = p5.Vector.sub(this.end, this.begin);
-
       dir.rotate(a);
       dir.mult(0.67);
       var newEnd = p5.Vector.add(dir, this.end);
@@ -25,25 +39,6 @@ function branch(begin , end){
           newBr[0].last = true;
           newBr[1].last = true;
       }
-
       return newBr;
    }
-}
-
-function leaves(pos) {
-  this.pos = pos;
-
-
-     this.show = function() {
-       noStroke();
-       fill(255,0,0,100);
-       ellipse(this.pos.x , this.pos.y, 5, 5);
-     }
-
-     this.fall = function(){
-        this.pos.y += random(1);
-        this.pos.x += random(1);
-
-     }
-
 }
