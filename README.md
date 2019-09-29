@@ -1,2 +1,2 @@
 # tree-recur
-Small project for something))
+This is a growing tree, written in p5.js
